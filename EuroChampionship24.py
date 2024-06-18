@@ -5,6 +5,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 
 from datetime import datetime
+st.set_page_config(layout="wide")
 
 title_html = """
     <style>
@@ -32,7 +33,8 @@ start_date = datetime(2024, 6, 14)
 end_date = datetime(2024, 6, 26)
 
 
-latest_scores = df[df['Date'] == df.iloc[-1,0]].iloc[0, 1:]
+latest_scores = df[df['Date'] == df.iloc[-1,0]].iloc[0, 1:-1]
+#st.write(latest_scores)
 
 top_users_df = latest_scores.sort_values(ascending=False)
 
@@ -68,9 +70,17 @@ for igroups, users in enumerate(user_groups):
             y=df[user],
             mode='lines+markers',  # Show both lines and markers
             name=user,
+            line_shape='linear',
+            #title="layout.hovermode='x'",
             line=dict(width=1),  # Customize line color and width
+            #hoveron={'info': True},
             marker=dict(symbol='circle', size=6, line=dict(width=0.5)),  # Circle markers
+            hoverinfo='text',  # Use text for hover info
+            text=df.apply(lambda row: f"Group {row['info']}, {user},{row[user]}", axis=1)  # Custom hover info
         ))
+
+    #fig.update_layout(hovermode='x')
+    fig.update_traces(mode="markers+lines", hovertemplate=None)#'%{text}<extra></extra>')
 
     fig.update_layout(
         xaxis=dict(
@@ -79,7 +89,8 @@ for igroups, users in enumerate(user_groups):
         ),
         yaxis=dict(title='Scores'),
         height=300,
-        width = 900,
+        #width = 1300,
+        
         margin=dict(l=10, r=10, t=15, b=15),
         paper_bgcolor='rgba(0,0,0,0)',  # Make the plot background transparent
         plot_bgcolor='rgba(0,0,0,0)',   # Make the plot background transparent
@@ -92,5 +103,5 @@ for igroups, users in enumerate(user_groups):
         }
     )
     st.markdown("""---""")
-    st.plotly_chart(fig)#, use_container_width=True)
+    st.plotly_chart(fig, use_container_width=True)
     

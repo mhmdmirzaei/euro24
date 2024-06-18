@@ -45,7 +45,7 @@ with st.sidebar:
 top_users = top_users_df.index
 
 users_per_plot = 8#5, 13, 5]
-user_groups = user_groups = [top_users[:5], top_users[5:10], top_users[10:15], top_users[15:]]#[top_users[i:i + users_per_plot] for i in range(0, len(top_users), users_per_plot)]
+user_groups = user_groups = [top_users[:3], top_users[3:8], top_users[8:13], top_users[13:]]#[top_users[i:i + users_per_plot] for i in range(0, len(top_users), users_per_plot)]
 
 #st-write()
 

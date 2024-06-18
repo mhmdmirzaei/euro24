@@ -33,7 +33,14 @@ end_date = datetime(2024, 6, 26)
 
 
 latest_scores = df[df['Date'] == df.iloc[-1,0]].iloc[0, 1:]
-top_users = latest_scores.sort_values(ascending=False).index
+
+top_users_df = latest_scores.sort_values(ascending=False)
+
+with st.sidebar:
+    st.write('Latest results:')
+    st.table(top_users_df.astype("str"))
+
+top_users = top_users_df.index
 
 users_per_plot = 8#5, 13, 5]
 user_groups = user_groups = [top_users[:5], top_users[5:10], top_users[10:15], top_users[15:]]#[top_users[i:i + users_per_plot] for i in range(0, len(top_users), users_per_plot)]

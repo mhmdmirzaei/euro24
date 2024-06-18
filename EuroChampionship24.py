@@ -49,7 +49,7 @@ user_groups = user_groups = [top_users[:5], top_users[5:10], top_users[10:15], t
 #st-write()
 
 #st.write()
-st.markdown(title_html, unsafe_allow_html=True)
+#st.markdown(title_html, unsafe_allow_html=True)
 
 titles = ['The Master Scorer Squad!', 'The Upper Median Masters!', 'The Mid-Range Mavericks!','The Last-Minute Legends!']
 

@@ -4,19 +4,29 @@ import numpy as np
 import plotly.express as px
 from datetime import datetime
 
-title_html = """
+st.markdown(
+    f"""
     <style>
-        .title {
-            font-family: 'Arial', sans-serif;
-            font-size: 20px;
-            font-weight: bold;
-            color: #333333; /* You can use any color code you like */
-            text-align: center;
-            padding: 0px;
-        }
+    .reportview-container {{
+        background: url("{background_image}") no-repeat center center fixed;
+        background-size: cover;
+    }}
+    .title-container {{
+        margin-top: -20px;  /* Adjust the top margin here */
+        text-align: center; /* Center align the title */
+    }}
+    .title-container h1 {{
+        color: white;  /* Change title text color if needed */
+        font-size: 32px;  /* Adjust title font size */
+    }}
     </style>
-    <h1 class="title">LaC UEFA Euro 2024 Championship!</h1>
-"""
+    """,
+    unsafe_allow_html=True
+)
+
+# Title and introduction
+st.markdown("<div class='title-container'><h1>LaC UEFA Euro 2024 Championship!</h1></div>", unsafe_allow_html=True)
+
 
 df = pd.read_csv('Res_2.csv')
 #df.index = df.Date

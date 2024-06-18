@@ -2,27 +2,23 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import plotly.express as px
+import plotly.graph_objects as go
+
 from datetime import datetime
 
-st.markdown(
-    f"""
+title_html = """
     <style>
-    .title-container {{
-        margin-top: -20px;  /* Adjust the top margin here */
-        text-align: center; /* Center align the title */
-    }}
-    .title-container h1 {{
-        color: white;  /* Change title text color if needed */
-        font-size: 32px;  /* Adjust title font size */
-    }}
+        .title {
+            font-family: 'Arial', sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+            color: #333333; /* You can use any color code you like */
+            text-align: center;
+            padding: 0px;
+        }
     </style>
-    """,
-    unsafe_allow_html=True
-)
-
-# Title and introduction
-st.markdown("<div class='title-container'><h1>LaC UEFA Euro 2024 Championship!</h1></div>", unsafe_allow_html=True)
-
+    <h1 class="title">LaC UEFA Euro 2024 Championship!</h1>
+"""
 
 df = pd.read_csv('Res_2.csv')
 #df.index = df.Date
@@ -45,13 +41,29 @@ user_groups = user_groups = [top_users[:5], top_users[5:10], top_users[10:15], t
 #st-write()
 
 #st.write()
-#st.markdown(title_html, unsafe_allow_html=True)
+st.markdown(title_html, unsafe_allow_html=True)
 
 titles = ['The Master Scorer Squad!', 'The Upper Median Masters!', 'The Mid-Range Mavericks!','The Last-Minute Legends!']
 
 for igroups, users in enumerate(user_groups):
-    #st.line_chart(df.iloc[-1])
-    fig = px.line(df, x="Date", y=users)
+    
+    fig = go.Figure()
+
+    for user in users:
+        #st.line_chart(df.iloc[-1])
+        #fig = px.line(df, x="Date", y=users)
+
+
+
+        # Add scatter plot with markers on top of the line plot
+        fig.add_trace(go.Scatter(
+            x=df['Date'],
+            y=df[user],
+            mode='lines+markers',  # Show both lines and markers
+            name=user,
+            line=dict(width=1),  # Customize line color and width
+            marker=dict(symbol='circle', size=6, line=dict(width=0.5)),  # Circle markers
+        ))
 
     fig.update_layout(
         xaxis=dict(

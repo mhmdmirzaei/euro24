@@ -29,7 +29,7 @@ df.index = df['Date']
 #df.drop(columns='Date', inplace=True)
 #st.write(df)
 
-start_date = datetime(2024, 6, 14)
+start_date = datetime(2024, 6, 13)
 end_date = datetime(2024, 6, 26)
 
 

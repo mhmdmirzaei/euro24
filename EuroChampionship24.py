@@ -7,10 +7,6 @@ from datetime import datetime
 st.markdown(
     f"""
     <style>
-    .reportview-container {{
-        background: url("https://upload.wikimedia.org/wikipedia/en/thumb/2/26/UEFA_Euro_2024_Logo.svg/800px-UEFA_Euro_2024_Logo.svg.png") no-repeat center center fixed;
-        background-size: cover;
-    }}
     .title-container {{
         margin-top: -20px;  /* Adjust the top margin here */
         text-align: center; /* Center align the title */

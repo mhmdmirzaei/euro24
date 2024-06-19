@@ -105,21 +105,3 @@ for igroups, users in enumerate(user_groups):
     st.markdown("""---""")
     st.plotly_chart(fig, use_container_width=True)
     
-
-
-# Function to get the current timestamp
-def get_current_timestamp():
-    return datetime.now()
-
-# Initialize or load the visits CSV
-if not os.path.exists(csv_file):
-    df = pd.DataFrame(columns=["timestamp"])
-    df.to_csv(csv_file, index=False)
-
-# Record the visit
-now = get_current_timestamp()
-new_visit = pd.DataFrame([[now]], columns=["timestamp"])
-new_visit.to_csv(csv_file, mode='a', header=False, index=False)
-
-# Read the CSV file into a DataFrame
-df = pd.read_csv(csv_file)

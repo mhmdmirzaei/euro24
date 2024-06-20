@@ -138,7 +138,7 @@ with tab1:
     #st.write(df)
 
     start_date = datetime(2024, 6, 14)
-    end_date = datetime(2024, 6, 26)
+    end_date = datetime(2024, 6, 27)
 
 
     latest_scores = df[df['Date'] == df.iloc[-1,0]].iloc[0, 1:-1]

@@ -185,7 +185,7 @@ with tab1:
 # Content for Tab 2
 with tab2:
     user_v = st.selectbox(
-    "Select a user to run the scenario of 'What happens if that user gets it right from now on!'?",
+    "Select a user to run the scenario of 'What happens if that user gets it 100% right from now on!'?",
     tuple(dfs.columns.levels[0][:-1]), index=None, placeholder="Select...")
     
     #st.write(type(user_v))
